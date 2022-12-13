@@ -1,5 +1,8 @@
 const myLibrary = [];
 const bookGrid = document.querySelector(".books-grid");
+let numberOfBooks = document.querySelector("#num-of-books");
+numberOfBooks.textContent = myLibrary.length;
+
 
 function Book(name, author, numberOfPages, readStatus) {
     this.name = name;
@@ -9,7 +12,8 @@ function Book(name, author, numberOfPages, readStatus) {
 }
 
 function addBookToLibrary(name, author, numberOfPages, readStatus) {
-    return myLibrary.push(new Book(name, author, numberOfPages, readStatus));
+    myLibrary.push(new Book(name, author, numberOfPages, readStatus));
+    numberOfBooks.textContent = myLibrary.length;
 }
 
 function displayBook() {
