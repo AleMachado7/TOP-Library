@@ -34,16 +34,27 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 0 20vw;
+    min-height: 75vh;
+    padding: 0 10vw;
     gap: 1rem;
+}
+
+main button {
+    padding: 0.5rem 0.8rem;
+    border-radius: 12px;
+    border: none;
+    margin-bottom: 1rem;
+}
+
+main button:hover {
+    box-shadow: #0ae06a 0px 0px 20px;
 }
 
 .books-grid {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     grid-auto-flow: row;
     gap: 1.3rem;
-
 }
 
 .book {
@@ -53,7 +64,8 @@ main {
     border: solid 1px #ffffff;
     border-radius: 8px;
     padding: 1rem;
-    background-color: #163623;
+    background-color: #0c2215;
+    box-shadow: rgb(167, 167, 167) 5px 5px 5px;
 }
 
 footer {
