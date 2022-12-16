@@ -60,6 +60,10 @@ main {
     background: #dddddd;
     border-radius: 16px;
     color: #000000;
+    position: absolute;
+    visibility: hidden;
+    transform: scale(0.01);
+    transition: transform 0.3s;
 }
 
 .form-container h3 {
@@ -83,7 +87,7 @@ form {
 .form-buttons {
     display: flex;
     gap: 3rem;
-    padding: 1rem;
+    padding: 0 1rem 1rem 1rem   ;
 }
 
 .form-buttons button {
@@ -103,12 +107,17 @@ form {
     box-shadow: #0ae06a 0px 0px 20px;
 }
 
-#cancel {
+#close-form {
     background-color: #ff0000;
 }
 
-#cancel:hover {
+#close-form:hover {
     box-shadow: #ff0000 0px 0px 20px;
+}
+
+.open-form {
+    visibility: visible;
+    transform: scale(1);
 }
 
 .books-grid {

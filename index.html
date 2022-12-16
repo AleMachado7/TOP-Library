@@ -16,11 +16,11 @@
     </header>
     <main>
         <div class="input-controls">
-            <button>Add New Book</button> 
+            <button id="add-book">Add New Book</button> 
         </div>
         <div class="form-container">
             <h3>New Book</h3>
-            <form>
+            <form id="new-book-form">
                 <div class="form-data">
                     <label for="title">Title:</label>
                     <input type="text" id="title" name="title">
@@ -39,8 +39,8 @@
                 </div>
             </form>
             <div class="form-buttons">
-                <button id="confirm">Save</button>
-                <button id="cancel">Close</button>
+                <button type="submit" id="confirm" form="new-book-form">Save</button>
+                <button type="reset" id="close-form" form="new-book-form">Close</button>
             </div>
 
         </div>
