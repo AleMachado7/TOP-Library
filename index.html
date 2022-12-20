@@ -20,29 +20,28 @@
         </div>
         <div class="form-container">
             <h3>New Book</h3>
-            <form id="new-book-form">
+            <form action="#" method="post" id="new-book-form">
                 <div class="form-data">
                     <label for="title">Title:</label>
-                    <input type="text" id="title" name="title">
+                    <input type="text" id="title" name="title" maxlength="30" placeholder="Ex: Harry Potter" required/>
                 </div>
                 <div class="form-data">
                     <label for="author">Author:</label>
-                    <input type="text" id="author" name="author">
+                    <input type="text" id="author" name="author" maxlength="30" placeholder="Ex: George R. R. Martin" required/>
                 </div>
                 <div class="form-data">
                     <label for="pages">Number of Pages:</label>
-                    <input type="number" id="pages" name="pages">
+                    <input type="number" id="pages" name="pages" placeholder="Ex: 10" required/>
                 </div>
                 <div class="form-data">
                     <label for="read">Already Read?</label>
-                    <input type="checkbox" id="read" name="read">
+                    <input type="checkbox" id="read" name="read"/>
                 </div>
             </form>
             <div class="form-buttons">
-                <button type="submit" id="confirm" form="new-book-form">Save</button>
+                <button type="reset" id="confirm" form="new-book-form">Save</button>
                 <button type="reset" id="close-form" form="new-book-form">Close</button>
             </div>
-
         </div>
         <div class="books-grid">
         </div>
