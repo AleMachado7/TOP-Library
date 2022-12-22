@@ -9,10 +9,10 @@ function Book(title, author, pages, read) {
   this.author = author;
   this.pages = pages;
   this.read = read;
+}
 
-  function changeReadStatus() {
-    this.read = !this.read;
-  }
+Book.prototype.changeReadStatus = function() {
+  this.read = !this.read;
 }
 
 function addBookToLibrary(title, author, pages, read) {
@@ -30,7 +30,7 @@ function displayBook() {
     deleteButton.classList.add("delete-book-button");
     deleteButton.textContent = "Delete";
     deleteButton.addEventListener("click", () => {
-      deleteBook(deleteButton.parentElement)
+      deleteBook(deleteButton.parentElement);
     });
 
     Object.entries(myLibrary[i]).forEach(([key, value]) => {
