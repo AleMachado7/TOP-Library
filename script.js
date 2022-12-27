@@ -24,21 +24,53 @@ function addBookToLibrary(title, author, pages, read) {
 function displayBook() {
   bookGrid.replaceChildren();
 
+  // loop through the library array and get the objects to display
   for (i = 0; i < myLibrary.length; i++) {
     let newBook = document.createElement("div");
-    let deleteButton = document.createElement("button");
-    deleteButton.classList.add("delete-book-button");
-    deleteButton.textContent = "Delete";
-    deleteButton.addEventListener("click", () => {
-      deleteBook(deleteButton.parentElement);
-    });
 
+    //loop through the object properties to display the values of each of then
     Object.entries(myLibrary[i]).forEach(([key, value]) => {
       let dataLabel = key.charAt(0).toUpperCase() + key.slice(1);
-      let bookInfo = document.createElement("p");
-      bookInfo.textContent = dataLabel + ": " + value;
-      newBook.appendChild(bookInfo);
-      })
+      let bookId = "book-" + i;
+      newBook.setAttribute("id", bookId);
+
+      if(key === 'read') { 
+        let statusDiv = document.createElement("div");
+        statusDiv.style.cssText = "display: flex; gap: 8px;";
+        
+        let statusSwitch = document.createElement('input');
+        statusSwitch.type = 'checkbox';
+        statusSwitch.checked = value;
+        statusSwitch.id = "read-ckbox";
+
+        statusSwitch.addEventListener("click", () => {
+          let elementIndex = document.getElementById(bookId).getAttribute("data-index");
+          myLibrary[elementIndex].changeReadStatus();
+        })
+
+        let statusLabel = document.createElement('label');
+        statusLabel.setAttribute("for", "read-ckbox");
+        statusLabel.textContent = dataLabel;
+
+        statusDiv.appendChild(statusLabel);
+        statusDiv.appendChild(statusSwitch);
+
+        newBook.appendChild(statusDiv);
+      } 
+      else {
+        let bookInfo = document.createElement("p");
+        bookInfo.textContent = dataLabel + ": " + value;
+        newBook.appendChild(bookInfo);
+      }
+    })
+
+      // add delete button to the book 
+      let deleteButton = document.createElement("button");
+      deleteButton.classList.add("delete-book-button");
+      deleteButton.textContent = "Delete";
+      deleteButton.addEventListener("click", () => {
+        deleteBook(deleteButton.parentElement);
+      });
 
     newBook.setAttribute("data-index", i);
     newBook.appendChild(deleteButton);
