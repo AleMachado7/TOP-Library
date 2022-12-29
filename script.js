@@ -1,8 +1,7 @@
 const myLibrary = [];
-const bookGrid = document.querySelector('.books-grid');
-const numberOfBooks = document.querySelector('#num-of-books');
-const popupForm = document.querySelector('.form-container');
-const deleteButtons = document.querySelectorAll('.delete-book-button');
+const bookGrid = document.querySelector(".books-grid");
+const numberOfBooks = document.querySelector("#num-of-books");
+const popupForm = document.querySelector(".form-container");
 
 function Book(title, author, pages, read) {
   this.title = title;
@@ -11,7 +10,7 @@ function Book(title, author, pages, read) {
   this.read = read;
 }
 
-Book.prototype.changeReadStatus = function() {
+Book.prototype.changeReadStatus = function () {
   this.read = !this.read;
 };
 
@@ -26,30 +25,32 @@ function displayBook() {
 
   // loop through the library array and get the objects to display
   for (let i = 0; i < myLibrary.length; i += 1) {
-    const newBook = document.createElement('div');
+    const newBook = document.createElement("div");
 
     // loop through the object properties to display the values of each of then
     Object.entries(myLibrary[i]).forEach(([key, value]) => {
       const dataLabel = key.charAt(0).toUpperCase() + key.slice(1);
       const bookId = `book-${i}`;
-      newBook.setAttribute('id', bookId);
+      newBook.setAttribute("id", bookId);
 
-      if (key === 'read') { 
-        const statusDiv = document.createElement('div');
-        statusDiv.style.cssText = 'display: flex; gap: 8px;';
+      if (key === "read") {
+        const statusDiv = document.createElement("div");
+        statusDiv.style.cssText = "display: flex; gap: 8px;";
 
-        const statusSwitch = document.createElement('input');
-        statusSwitch.type = 'checkbox';
+        const statusSwitch = document.createElement("input");
+        statusSwitch.type = "checkbox";
         statusSwitch.checked = value;
-        statusSwitch.id = 'read-ckbox';
+        statusSwitch.id = "read-ckbox";
 
-        statusSwitch.addEventListener('click', () => {
-          const elementIndex = document.getElementById(bookId).getAttribute('data-index');
+        statusSwitch.addEventListener("click", () => {
+          const elementIndex = document
+            .getElementById(bookId)
+            .getAttribute("data-index");
           myLibrary[elementIndex].changeReadStatus();
         });
 
-        const statusLabel = document.createElement('label');
-        statusLabel.setAttribute('for', 'read-ckbox');
+        const statusLabel = document.createElement("label");
+        statusLabel.setAttribute("for", "read-ckbox");
         statusLabel.textContent = dataLabel;
 
         statusDiv.appendChild(statusLabel);
@@ -57,56 +58,56 @@ function displayBook() {
 
         newBook.appendChild(statusDiv);
       } else {
-        const bookInfo = document.createElement('p');
+        const bookInfo = document.createElement("p");
         bookInfo.textContent = `${dataLabel}: ${value}`;
         newBook.appendChild(bookInfo);
       }
     });
 
-      // add delete button to the book 
-      const deleteButton = document.createElement('button');
-      deleteButton.classList.add('delete-book-button');
-      deleteButton.textContent = 'Delete';
-      deleteButton.addEventListener('click', () => {
-        deleteBook(deleteButton.parentElement);
-      });
+    // add delete button to the book
+    const deleteButton = document.createElement("button");
+    deleteButton.classList.add("delete-book-button");
+    deleteButton.textContent = "Delete";
+    deleteButton.addEventListener("click", () => {
+      deleteBook(deleteButton.parentElement);
+    });
 
-    newBook.setAttribute('data-index', i);
+    newBook.setAttribute("data-index", i);
     newBook.appendChild(deleteButton);
-    newBook.classList.add('book');
+    newBook.classList.add("book");
     bookGrid.appendChild(newBook);
   }
 }
 
 function deleteBook(element) {
-  const elementIndex = element.getAttribute('data-index');
+  const elementIndex = element.getAttribute("data-index");
   myLibrary.splice(elementIndex, 1);
   numberOfBooks.textContent = myLibrary.length;
   displayBook();
 }
 
 function openForm() {
-  popupForm.classList.add('open-form');
+  popupForm.classList.add("open-form");
 }
 
 function closeForm() {
-  popupForm.classList.remove('open-form');
+  popupForm.classList.remove("open-form");
 }
 
-const openFormButton = document.querySelector('#add-book');
-openFormButton.addEventListener('click', openForm);
+const openFormButton = document.querySelector("#add-book");
+openFormButton.addEventListener("click", openForm);
 
-const closeFormButton = document.querySelector('#close-form');
-closeFormButton.addEventListener('click', closeForm);
+const closeFormButton = document.querySelector("#close-form");
+closeFormButton.addEventListener("click", closeForm);
 
-const addBook = document.querySelector('#confirm');
-addBook.addEventListener('click', (event) => {
-  const bookTitle = document.querySelector('#title').value;
-  const bookAuthor = document.querySelector('#author').value;
-  const bookPages = document.querySelector('#pages').value;
-  const bookRead = document.querySelector('#read').checked;
+const addBook = document.querySelector("#confirm");
+addBook.addEventListener("click", (event) => {
+  const bookTitle = document.querySelector("#title").value;
+  const bookAuthor = document.querySelector("#author").value;
+  const bookPages = document.querySelector("#pages").value;
+  const bookRead = document.querySelector("#read").checked;
 
-  if (bookTitle === '' || bookAuthor === '' || bookPages === '') {
+  if (bookTitle === "" || bookAuthor === "" || bookPages === "") {
     event.preventDefault();
     return;
   }
