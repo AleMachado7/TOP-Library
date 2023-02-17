@@ -3,16 +3,18 @@ const bookGrid = document.querySelector(".books-grid");
 const numberOfBooks = document.querySelector("#num-of-books");
 const popupForm = document.querySelector(".form-container");
 
-function Book(title, author, pages, read) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
-}
+class Book {
+  constructor(title, author, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+  }
 
-Book.prototype.changeReadStatus = function () {
-  this.read = !this.read;
-};
+  changeReadStatus() {
+    this.read = !this.read;
+  }
+}
 
 function addBookToLibrary(title, author, pages, read) {
   myLibrary.push(new Book(title, author, pages, read));

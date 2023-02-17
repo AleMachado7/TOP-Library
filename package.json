@@ -1,0 +1,27 @@
+{
+  "name": "top-library",
+  "version": "1.0.0",
+  "description": "Library Project created for The Odin Project curriculum",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AleMachado7/TOP-Library.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AleMachado7/TOP-Library/issues"
+  },
+  "homepage": "https://github.com/AleMachado7/TOP-Library#readme",
+  "devDependencies": {
+    "eslint": "^8.30.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-prettier": "^4.2.1"
+  }
+}
